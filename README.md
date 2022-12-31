@@ -1,4 +1,10 @@
 
-# Haikus for Codespaces
+# Welfare Web App
 
-This is a quick node project template for demoing Codespaces. It is based off of the [Azure node sample](https://github.com/Azure-Samples/nodejs-docs-hello-world). It's great!!!
+A secure web page of school alumni welfare account managing and other activities
+
+Created in Django framework with authorization and authentication
+
+backed up with SQ lite database
+
+deployed on AWS lightsail linux server and nginex
