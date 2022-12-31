@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Accounts 
+  {% if user.is_staff %}
+  <a class="btn btn-secondary" href="/accounts/addtransaction">Add</a>
+  {% endif %}
+</h1>
+<div class="container">
+  <p>Filter By</p>
+  <form action="filter_transaction" method="post">
+    {% csrf_token %}
+    <select name="type" class="form-select" style="float: left; width: 200px; margin-right: 5px;">
+      <option selected disabled="true">Transaction Type</option>
+      <option>Credit</option>
+      <option>Expense</option>
+    </select>
+    <input class="btn btn-primary" type="submit" value="Go" style="width: 50px;">
+    <a href="/accounts" class="btn btn-secondary" style="width: 60px;">Clear</a>
+  </form>
+</div>
+<h4 style="color:greenyellow;">Fund Balance - {{balance}}</h4>
+{% for transaction in transactions %}
+<div class="card" style="color: black;margin: 10px;">
+  <h5 class="card-header">
+    Transaction Id - <strong>{{transaction.id}}</strong>
+         | Create By - <strong>{{transaction.addBy}}</strong>
+          | Date - <strong>{{transaction.transDate}}</strong></h5>
+  {% if transaction.type == 'Expense' %}
+  <div class="card-body" style="color: red;">
+    {% elif transaction.type == 'Credit' %}
+    <div class="card-body" style="color:green;">
+      {% endif %}
+      <h5 class="card-title">{{transaction.particulars}} | 
+        <strong>&#8377 {{transaction.amount}}</strong></h5>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}

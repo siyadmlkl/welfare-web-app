@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container" style="width: 70%;height:100%; margin-left: 15%;background-color: black; text-align: center;">
+    <h3>SNHS 10C '94 Batch Welfare </h3>
+    
+    <img src="{% static 'css/10c.jpeg'%}" alt="" style="width: 100%;">
+
+    <p style="font-size: 2em;">Before almost three decades, we were together in a class room..<br>
+        Shoulder to shoulder, hands to hands..<br>
+        We shared our happiness, pains and all our innocent feelings each other...<br>
+        We were unite there, with ridiculously deep friendship...<br>
+        Innocent, clever friendship....<br>
+        <br>
+        Now, after three decades rightnow,<br>
+        We are joining hands again... <br>
+        To support each other like one family...<br> 
+        To share our difficulties.., to share our happy and sorrow moments in our life...<br>
+        And provide comfortability in all possible complications in life of each other...<br>
+        Yes, we classmates of 10C are committed to ensure strong support to our subordinates...<br>
+    </p>
+</div>
+{% else %}
+<div class="mb-2 row" style="margin: 10% 40% 0% 40%;">
+    <form action="logIn" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter Username" class="form-control"><br>
+        <input type="password" name="password" placeholder="Enter Password" class="form-control"><br>
+        <input type="submit" value="Login" class="btn btn-secondary">
+    </form>
+    <div>
+        {%for message in messages%}
+        <p><strong>{{message}}</strong></p>
+        {%endfor%}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

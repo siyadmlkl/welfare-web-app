@@ -1,0 +1,17 @@
+  .navbar {
+    background: darkslategray;
+  }
+  body {
+    background-color: rgb(48, 43, 43);
+    color: aliceblue;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: small;
+  }
+  .mb-3,
+  .mb-6 {
+    justify-content: center;
+  }
+  .btn {
+    width: 150px;
+  }
+  
